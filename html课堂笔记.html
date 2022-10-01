@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+&lt;&gt;&nbsp;&copy;html字符实体
+有语义的新增html5标签代替废弃标签 strong-b ins-u em-i del-s
+?username=&pwd=&gender=yao&hobby=crazy&birthday=&email=&phone=
+   <base target="_blank"> 在head内指定
+   假链接辅助开发 # 回到顶部  javascript:无反应链接
+   给标签指定独一无二的身份证id，以跳转到当前页面指定位置
+   <a href="index2.html#idid" title="" target=""></a>
+   <img src="" width="" height="" title="" alt=""/>
+
+   相对路径不准跨盘符
+   <img src="pic.jpg"/>同级寻找
+   <img src="images/pic.jpg"/>下级寻找
+   <img src="../pic.jpg"/>上级寻找
+   绝对路径从盘符开始找地址直接从电脑的位置粘贴，可移植性不好 企业开发不这样。
+   webstorm无法正常打开绝对路径，得自己去文件那里点开
+
+   ul>li*3无序列表常用  dl>dt+dd*3 自定义列表也用 ol>li*3 有序列表不咋用
+   table>caption+th*4+tr*3>td*4 三行四列的表格 border="1"默认下是没有细线的
+
+   企业开发中做细线表格，给table设bgcolor为黑，cellspacing为1px
+   给tr设bgcolor为白.表格结构作为了解 thead tbody tfoot
+   td内colspan="2"水平向后合并俩单元格
+   td内rowspan="2"水平向后合并俩单元格垂直向下合并俩单元格
+
+表单元素
+<form action="">
+    <input type="radio" name="gender" value="male" checked="checked">男
+    <input type="radio" name="gender" value="female">女
+    <input type="radio" name="gender" >保密<br>单选或多选框中的name值都相同
+    表单标签中除了按钮都可以指定value作为提交到服务器的数据，
+    name&value键值对，name一定要指定了才能提交，作为用户自己输入的比如text和password可以不预设value属性，但是checkbox和radio的value必须指定，不然提交的是“on”这种不明所以的东西，understand？
+    <input type="checkbox" checked="checked" value="football">足球
+    <input type="checkbox" checked="checked" value="basketball">篮球
+    <input type="checkbox" checked="checked" value="pingpong">乒乓球<br>
+    绑定文字与输入框，让鼠标点击文字时也能聚焦输入框<br>
+    lable直接包裹文字和input不设id和for了也行，但这样具有局限性，只能是lable包裹内的绑定在一<br>
+    <label for="account">账号</label><input type="text" value="请在此输入" id="account">
+    <label for="pwd">密码</label><input type="password" value="888888" id="pwd"><br>
+    <input type="button" value="我是按钮" onclick="">
+    <input type="image" src="" title="点击查看" alt="图片错误" onclick=""> 图片按钮
+    <input type="reset" value="重置表单数据">
+    <input type="submit" value="提交表单数据"><br>
+    form内的action属性是提交到哪个服务器
+    而所有具有name属性的数据会被提交<br>
+    <input type="hidden" name="" value="">
+    隐藏域悄悄咪咪搜集用户信息不出现在页面中<br>
+    给输入框绑定待选列表，不用掌握这个因为众多浏览器都不支持datalist
+    <input type="text" list="cars">
+    <datalist id="cars">
+        <option>奔驰</option>
+        <option>宝马</option>
+        <option>宾利</option>
+    </datalist><br>
+    下拉列表
+    <select>
+        <optgroup label="北京">
+            <option>朝阳区</option>
+            <option>海淀区</option>
+            <option>其他区</option>
+        </optgroup>
+        <optgroup label="济南">
+            <option>长清区</option>
+            <option selected="selected">历下区</option>
+            <option>其他区</option>
+        </optgroup>
+    </select>
+    <textarea cols="10" rows="3">这里是可换行的文&nbsp;本输入区域</textarea>
+</form>
+
+以下是video的第一种格式
+<video src="images/sb1.webm" autoplay="autoplay" controls="controls" poster="images/5.jpeg" loop="loop" preload="none" muted="muted" width="300px"></video>有了autoplay,preload就会失效
+以下是video的第二种格式，三种视频后缀webm mpeg4 ogg
+js框架html5media解决老浏览器不支持html5标签的问题。audio标签和video一样。
+<video>
+    <source src="images/sb1.webm" type="video/webm"><source/>
+    <source src="images/sb1.ogg" type="video/ogg"><source/>
+    <source src="images/sb1.mp4" type="video/mp4"><source/>
+</video>
+<details>
+    <summary>概要</summary>
+    详细信息
+</details>
+<marquee behavior="alternate" direction="right" scrollamount="10" loop="3">走马灯marquee不被w3c推荐，但是各个浏览器都支持得很好,在这里加图片也是可以的</marquee>
+   -->

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>css学习</title>
+    <style type="text/css">
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+        h1+p{
+            text-decoration:none;/*underline,line-through,overline*/
+            text-align: center;
+            text-indent: 2em;
+
+            color: green;
+            /*red/rgb(255,0,0)/rgba(255,0,0,1)/#FF0000/#F00*/
+
+            font-style: italic;
+            font-weight:bold;
+            font-size: 30px;
+            font-family:Consolas,"微软雅黑";
+
+            /*font:italic bold 30px Consolas,"微软雅黑";*/
+            /*这种简写格式size和family的存在及位置不可更改*/
+        }
+
+        img[alt|=a]{
+            color: red;
+        }
+        /*标签选择器 p{属性:值;}
+        id选择器 #idID1{属性:值;}
+        企业开发中如果仅为了设置样式会用类名不会用id，因为id在前端开发中是留给JS用的
+        类选择器 .className{属性:值;} 类名就是专门用来设置样式的提取冗余代码
+       <p class="className1 className2">disparage</p>类可以多个id只能1个
+       后代选择器   div p{属性:值;}
+       子元素选择器 div>p{属性:值;}
+       交集选择器企业开发用的不多，因为能直接找类名或id名何必靠交集 p.id1{}
+       并集选择器   .id1,.id2{}
+       兄弟选择器 相邻兄弟选择器css2 设置紧跟其后的那一个 h1+p{}
+       通用兄弟选择器 设置后面的所有标签 h1~h2{}
+       序选择器 css3新增选择器中最具代表性
+       p:first-child{} 选中同级别中第一个标签，如果它是p的话
+       p:first-of-type 选中同级别中同类型的第一个，如果它是p的话
+       p:last-child{}   p:last-of-type  同理
+       p:nth-child(3){} 选中同级别中第n个标签(n=3，odd第奇数，even第偶数，xn+y)，如果它是p的话
+       p:nth-of-type(3){} 选中同级别中同类型的第n个(n=3，odd第奇数，even第偶数)，如果它是p的话
+       p:nth-last-child(2){} 选中同级别中倒数第n个标签(n=3)，如果它是p的话
+       p:nth-last-of-type(3){} 选中同级别中同类型的倒数第n个(n=3)，如果它是p的话
+       p:only-child 选中父元素内唯一的子元素，如果这唯一的子元素刚好是p的话
+       p:only-of-type 选中父元素内唯一类型的某子标签，如果这唯一的子元素刚好是p的话
+       属性选择器 p[id]{} 1.找到所有的p标签 2.which具有id属性的p标签
+       p[class=fruit]{} 找到指定属性与值的标签 它最常见的应用场景是用于区分input属性 input[type=text]{}
+       img[alt^=abc]{} 找到具有alt属性，且alt的值以abc开头，的img（css3）
+       img[alt|=abc]{} 找到具有alt属性，且alt的值以abc开头，的img（css2）但如果abc后面还有东西，它只能识别 abc-bbx这种“-”连接
+       img[alt$=abc]{}  找到具有alt属性，且alt的值以abc结尾，的img（css3）
+       img[alt~=abc]{} 找到具有alt属性，且alt的值包含abc，的img（css2）但如果abc旁边还有东西，它只能识别被空格隔开的。
+       img[alt*=abc]{} 找到具有alt属性，且alt的值包含abc，的img（css3）
+       所以实际开发中css2的这几个基本不用，都被css3替代了
+       通配符选择器 *{} 设置界面所有标签，企业开发中一般不用，因为要遍历所有标签
+
+       css继承性 父元素的属性会应用在后代身上 只有color/font-/text-/line开头的属性才继承，a的文字颜色和下划线不继承，h的文字大小不继承
+       层叠性  优先级：间接选中（通过继承活得的属性）谁离子元素更近就听谁的
+       同类型的直接选中相同选择器的话谁在后面听谁的
+       直接选中 且不是相同类型选择器 id>类>标签>通配符>继承>浏览器默认
+       important 直接选中的某属性提升优先级到最高 p{color:green !important;}
+       直接拿到标签就是直接选中，所以通配符也是直接选中
+       优先级之权重问题 如果多个选择器都是直接选中了它，那么听哪个的呢
+       谁的id个数多——谁的类名个数多——谁的标签个数多——谁写在后面听谁的
+
+       div（容器级别）和span（文本级别）
+       css显示模式：块级元素独占一行 行内元素。。行内块级元素img既不独占一行又可设置宽高 转换css元素的显示模式 display:inline/block/inline-block;
+       div中的文本居中text-align:center
+       div的高度是其内部东西撑开的高度，宽度等于页面宽度 background-color
+       所有标签都可以设置背景颜色background-color,它和color的取值一样；
+       专设背景图片的background-image:url()地址可以本地或网络，图片会自动平铺，而background-repeat:就是控制平铺方式的，优化网页，用小图片平铺
+       背景定位，background-position背景图片会盖在背景颜色上,单词或单位px。默认下背景图会随着滚动，让背景图片固定位置的话就修改关联方式 background-attachment(企业开发用的少)
+       缩写 background:颜色 图片 平铺 关联  定位；
+       企业开发中更喜欢插入图片，语义更强会被搜索引擎收录
+       精灵图；边框属性：标签宽高的线条 border:宽度 样式 颜色，（既可以用上右下左border-top,也可以border-style:上右下左），单独设的话 border-top-width:
+       内边距属性就单一多了，padding:上 右 下 左，只写一个值就是四边相同，写俩值就是对边相同
+       外边距属性 margin：上右下左；标签与标签的回车会被当成空格
+       外边距在水平方向上叠加，垂直方向上叠加谁大听谁
+       盒子模型：所有的边框都可以设置宽高内边距边框外边距
+       box-sizing: border-box;更改border下元素宽高不变
+       注意：如果两个盒子是嵌套关系，设置内盒子顶部外边距时外盒子也会被顶下来，解决方法是给外盒子添加边框属性.所以企业开发设置内外盒子相对位置时应首先考虑用外盒子的padding而非内盒子的margin，padding控制父子关系，margin控制兄弟关系
+       内盒子水平居中是margin:0 auto;水平垂直居中只能margin:像素px auto；
+       margin:0 auto;盒子自身在父元素内水平居中 text-align:center;内容居中(盒子内的文字&图片，不管辖内盒子)
+       清空默认边距http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css拷贝
+       行高line-height和字号,文字在行高中默认是垂直居中的。要想一行文字在盒子内垂直居中，设置行高=盒子高，若多行文字的话就只能设置外盒子的padding了
+       前端开发中测量文字距盒子的内边距时以左内边距为主，右内边距会有误差，因为不满一个汉字的会另起一行，导致右边总会多出一些右边距，千万被把它当作真正被设置的右边距。水平方向内边距以左内边距为主
+       顶部内边距不是顶部到文字头顶的距离，而是顶部到行高头顶的距离，千万不要忘记文字的行高的存在.这活儿不是前端干的？是设计好的才做的？从外向内从上至下编写
+       ul的list-style:none;body的bgc
+
+       ！网页布局方式：标准流 浮动流float半脱离标准流 定位流
+       浮动流中管他什么酷爱不块都可以设置宽高但只有水平排版，浮动元素脱标 浮动元素贴靠,它有空间就直接贴靠，没空间就找它前一个兄弟盒子贴靠，再没空间就强行贴着父盒子，甚至把前面的兄弟盒子挤到身后 浮动元素字围现象 好难啊！！块级元素高度为0宽度是父元素body的宽度 标准流中内盒子可以撑起父块级元素的高度，而浮动流不会撑起父元素的高度
+       垂直方向用标准流 水平方向用浮动流
+       清除浮动（即让后面那个盒子里的浮动元素不会去找前面那个盒子里的浮动元素贴在一起）的方式一：给前面的父盒子设置高度，但是企业开发中能不这样就别这样
+       方式二：clear:both;不要去找左边或右边的浮动元素 但这种方式会使margin失效所以开发中也不用，它失效因为前方父元素因没有被撑高而在标准流中消失了那么后方父元素的margin自然就顶到了父元素body而父元素body没有边框的话会跟着被顶下来，但是body怎么可能被顶下来所以就直接失效  emmmm去求吧
+  方式三：隔墙法，外墙法和内墙法 外墙法是在两个装了浮动元素的大盒子之间加一个clear:both的空div(只要是额外的块级元素均可)，但是这样第二个盒子可以使用margin-top但第一个盒子不能使用margin-bottom，所以企业开发用外墙法时想隔开这俩盒子的话就直接设间隔盒子的高度;内墙法是在第一个盒子的末尾加上div，令其class里面clear:both。内墙法的margin一切正常，可以不设高度设margin
+  企业开发中不常用隔墙法，因为它凭空加了一个没有任何语义的div
+      真正清除浮动时推荐使用：
+      1.伪元素选择器 .box1::after{content:"";display:block;height:0;visibility:hidden;clear:both;}.box1{*zoom:1;}给box1里内容的前面H或后面添加一个子元素,与内墙法的性质很像,后面这个是因为css3新加入的所以为了兼容IE6
+      2.用overflow即可.box1{overflow:hidden;*zoom:1;}不想让标签内的东西超出标签；和清除浮动；和 还记得之前学过的box1包含着box2时想要挪动box2在box1中的位置时，设box2的margin-top会把box1也一起顶下来，除非给box1设边框，要是不想设边框就靠修改box1的padding-bottom，而今天学的overflow第三个用法就是给box1增加.box1{overflow:hidden;*zoom:1;}可以让box2设置margin-top而不把box1顶下来
+      text-decoration: none;取消a标签的下划线。text-align设置盒子内的文字对齐方式
+想要多个盒子顶部对齐 就给它们设置浮动
+定位流：相对 绝对 固定 静态
+相对定位 不脱离标准流，相对自己以前在标准流所处位置移动 position:relative;top:20px;距top方向写百分比也行
+给相对定位元素添加margin其实是添加给了它在标准流的位置，然后它再相对标准流移动。企业开发中相对定位应用于1.对元素微调2.配合子绝父相
+绝对定位 脱离标准流 和浮动一样不区分行内块级 默认相对于body首屏宽高而非整个网页(会随滚动条滚动)的定位 但如果它的祖先元素也是（非静态）定位流的话，就会相对于祖先元素定位 会忽略祖先元素的padding，说左上就左上不会被padding阻挡
+真正开发中不单独用相对或绝对，都是子绝父相
+企业开发中不独立用相对定位因为它相对于自身在标准流而移动，所以标准流的固定位置被占据很碍事；不独立用绝对定位就更好理解了，它相对body首屏的宽高定位，屏幕一旦拉大缩小滚动。。
+绝对定位中想要水平居中就left:50%;margin-left:-自身长度的一半px;垂直居中同理自己感悟去
+固定定位 脱离标准流 可惜IE6不支持 z-index属性控制定位流元素的定位关系 必须定位流才能用z-index默认定位流盖住标准流 同为定位流 后写的盖住先写的 默认值都是0，可通过指定它的值来。。父元素如果设置了z-index那么子元素的z-index就会失效
+
+css3新增的最具价值的三个模块 转换 过渡 动画
+a标签伪类选择器 修改a标签在一定的状态下的样式 a:link{} a:visited{} a:hover{} a:active{} 一块儿出现的话love hate必须按顺序 :hover伪类选择器可以应用在任何标签上
+过渡模块 div里面transition-property:width，background-color;transition-duration:3s,5s;(补充俩transition-delay:2s;
+            transition-timing-function:linear/ease/ease-in/ease-out/ease-in-out;)然后div:hover里描述要变成的样子
+   和font background border一样的连写模式transition:property duration timing-function delay 当有多个属性变化时逗号隔开继续按顺序，只有property duration是必须的，timing-function delay可省略，发生变化的属性特别多的时候transition:all 5s   div:hover span{....}
+
+ 2D转换模块 transform:rotate(45deg)/translate(0px,-50px)/scale(1,1.5)/none
+ 如果进行多个转换 空格隔开就好(坐标系可能会变) 不要在后面再写一遍 这样会覆盖掉前面的
+ 形变中心点 默认下元素以自己的中心点旋转  transform-origin:0px 0px;指定中心点 百分百或像素或特殊关键字 旋转轴向 rotate其实就是rotateZ 透视属性近大远小px值是离你很近或很远的视觉效果 这个透视属性必须设置给它的上级(最好是父元素)不能设置给它自己perspective:500px
+  盒子阴影和文字阴影 box-shadow:水平偏移 垂直偏移 模糊度 阴影扩展 阴影颜色 内外阴影;快速添加阴影只需要前三个就可以了 默认阴影颜色与盒子内容一致 text-shadow:水平偏移 垂直偏移 模糊度 阴影颜色   opacity:1;
+  后面的会盖住前面的；定位的一定会盖住没有定位的，
+
+  过渡必须人为触发才会执行，而动画不是。
+  div{
+            animation-name: lll;
+            animation-duration: 3s;
+            animation-delay: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: 3;
+            animation-direction: alternate;
+            animation-play-state: running;
+            animation-fill-mode: backwards;等待状态是否显示动画第一帧/forwards让元素结束状态保持动画最后一帧/none/both
+            简写模式 animation:动画名称 时长 速度模式 延迟时间 执行次数 往返动画；
+            过渡和动画都是三要素 自己多查文档
+        }
+        @keyframes lll {
+            百分比也可以
+            from{
+                margin-left: 0;
+            }
+            to{
+                margin-left: 500px;
+            }
+        }
+
+3D转换模块 想看谁近大远小给父元素添加 transform-style:presever-3d;表明它所有的子元素都要呈3d展现
+ 背景尺寸属性 设置背景图片大小 c3新增无论图片多大都填满整个网页background-size: cover;等比拉伸到宽度高度都填满网页/contain等比拉伸到宽度或高度填满网页background-size:200px 100px;宽和高 50% 50%百分比；auto 100px宽度按100px的高度进行等比拉伸
+ 背景图片定位区域属性 background-origin:padding-box;默认背景图片从padding区域显示/border-box/content-box
+ 背景绘制区域属性 background-clip:padding-box背景从padding区域开始绘制背景
+ C3多重背景图片 就是正常加背景图片后面逗号隔开，先添加的会盖住后添加的，定位属性错开就好了
+ 背景图片特别多的话就拆开写
+ background-image:url(""),url("");
+ background-repeat:no-repeat,no-repeat;
+ background-position:left top;right top;
+ 还有background-size,如下代码画的蓝天白云纸飞机
+ div{
+            width: 600px;
+            height: 190px;
+            border: 1px solid #000;
+            margin:100px auto;
+            background-image: url("images/bg-plane.png"),url("images/bg-sun.png"),url("images/bg-clouds.png");
+            background-repeat:no-repeat,no-repeat,no-repeat;
+            background-size: 50px 50px,50px 50px,auto auto;
+            animation: move 10s linear 0s infinite normal;
+        }
+        @keyframes move {
+            from{
+                background-position: 50px 150px,400px 50px,0px 0px;
+            }to{  background-position: 500px -150px,400px 50px,-600px 0px;
+            }
+        }
+
+ css书写格式 企业开发用外链样式
+ 1.行内样式<div style="color:red">我是div</div>
+ 2.内嵌样式 head内style内div{color:blue;}
+ 3.外链样式 新建css文件内div{color:blue;}然后在html文件内的head写<link rel="stylesheet" href="文件名.css"> 会先加载css
+ 4.导入样式 新建css文件内div{color:blue;}然后在html文件内的head的style内@import "文件名.css";先加载html 它是css2.1推出的 有兼容问题
+
+ 写一个完整的网页 站点文件夹(可以是中文)——css+images+js+index.html——清空默认样式——设置全局样式
+    清空默认样式
+        html{color:#000;background:#FFF}
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+        table{border-collapse:collapse;border-spacing:0}
+        fieldset,img{border:0}
+        address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}
+        ol,ul{list-style:none}
+        caption,th{text-align:left}
+        h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+        q:before,q:after{content:''}
+        abbr,acronym{border:0;font-variant:normal}
+        sup{vertical-align:text-top}
+        sub{vertical-align:text-bottom}
+        input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%}
+        legend{color:#000}
+        a{text-decoration: none;}
+        设置全局样式
+        body{
+            font-family:"微软雅黑";
+            font-size: 12px;
+            color: #999;
+            background-color:#f5f5f5;
+        }
+        企业logo都是很重要的 所以h1里面包一个a标签which的背景图片为logo
+        只有图片的宽度小于父元素，该图片的margin:0 auto;或在父元素设text-align:center才会起作用，如果图片宽度大于父元素可以1.使用定位流使其居中，绝对定位 left50% marginleft-自身宽度一半 2.margin:0 -100%;但是这种要求父元素设了text-align:center;和overflow:hidden
+        border-radius:50%向 div 元素添加圆角边框 transparent透明色
+    伸缩布局 display:flex;justify-content:space-between;
+                    */
+
+    </style>
+</head>
+<body>
+<h1>fkfafj</h1>
+<p class="className1 className2">disparage</p>
+<p>safhjh</p>
+<img src="" alt="abc">
+<img src="" alt="acc">
+</body>
+</html>
